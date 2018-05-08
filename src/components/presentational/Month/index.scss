@@ -1,0 +1,9 @@
+.c-month {
+  display: flex;
+  flex-wrap: wrap;
+
+  .day {
+    width: 16.66%;
+    height: 60px;
+  }
+}
