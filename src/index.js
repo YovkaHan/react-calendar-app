@@ -24,7 +24,9 @@ if (module.hot) {
     const NewApp = require('./components/containers/App').default;
     render(
       <AppContainer>
-        <NewApp store={store} />
+        <Provider store={store}>
+          <NewApp />
+        </Provider>
       </AppContainer>,
       document.getElementById('app')
     );
