@@ -59,7 +59,7 @@ class Calendar extends Component {
       <div className="c-calendar">
 
         {/*<Event/>*/}
-        <DateSwitcher id="dateSwitcher1" type="dateSwitcher" initDate="2018_06_13" splitter="_"/>
+        <DateSwitcher id="dateSwitcher1" type="dateSwitcher" initDate="2018_05_13"/>
         <CalendarView/>
         {/*<Week/>*/}
         {/*<ControlButtons/>*/}

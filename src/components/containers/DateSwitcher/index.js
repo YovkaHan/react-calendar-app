@@ -26,8 +26,8 @@ const countChar = (str, char) => {
   return count;
 }
 
-const defineSet = (dateStr, splitter) => {
-  const count = countChar(dateStr, splitter);
+const defineSet = (dateStr) => {
+  const count = countChar(dateStr, '_');
   try {
     if (count === 0) {
       return 'year';
@@ -44,8 +44,8 @@ const defineSet = (dateStr, splitter) => {
   }
 }
 
-const changeSet = (action, dateStr, splitter) => {
-  const count = countChar(dateStr, splitter);
+const changeSet = (action, dateStr) => {
+  const count = countChar(dateStr, '_');
 
   if (action === 'up') {
     return count === 2 ? 'month' : 'year'
@@ -56,19 +56,19 @@ const changeSet = (action, dateStr, splitter) => {
   }
 }
 
-export function dateTransform(dateStr, splitter) {
-  return dateStr.split(splitter).join('.');
+export function dateTransform(dateStr) {
+  return dateStr.split('_').join('.');
 }
 
-const dateFormation = (command, dateStr, splitter) => {
-  const date = dateTransform(dateStr, splitter);
-  const set = defineSet(dateStr, splitter);
-  const newSet = changeSet(command, dateStr, splitter);
+const dateFormation = (command, dateStr) => {
+  const date = dateTransform(dateStr);
+  const set = defineSet(dateStr);
+  const newSet = changeSet(command, dateStr);
 
   const timeFormats = {
     year: 'YYYY',
-    month: `YYYY${splitter}MM`,
-    day: `YYYY${splitter}MM${splitter}DD`
+    month: `YYYY_MM`,
+    day: `YYYY_MM_DD`
   };
 
   switch (command) {
@@ -80,14 +80,14 @@ const dateFormation = (command, dateStr, splitter) => {
         next: moment(date).add(1, newSet + 's').format(timeFormats[newSet]),
       }
     }
-    case 'down' : {
-      return {
-        set: set,
-        now: moment(date).format(timeFormats[set]),
-        prev: moment(date).subtract(1, set + 's').format(timeFormats[set]),
-        next: moment(date).add(1, set + 's').format(timeFormats[set]),
-      }
-    }
+    // case 'down' : {
+    //   return {
+    //     set: set,
+    //     now: moment(date).format(timeFormats[set]),
+    //     prev: moment(date).subtract(1, set + 's').format(timeFormats[set]),
+    //     next: moment(date).add(1, set + 's').format(timeFormats[set]),
+    //   }
+    // }
     case 'prev' : {
       return {
         set,
@@ -116,8 +116,8 @@ const dateFormation = (command, dateStr, splitter) => {
   }
 }
 
-export const performChange = (type, id, dispatch, set, inputDate, splitter) => {
-  const date =  dateFormation(set, inputDate, splitter);
+export const performChange = (type, id, dispatch, inputDate, set) => {
+  const date =  dateFormation(set, inputDate);
   dispatch(
     doChangeEntity(
       type,
@@ -133,33 +133,25 @@ class DateSwitcher extends Component {
     dispatch: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    object: PropTypes.object.isRequired,
-    splitter: PropTypes.string
+    object: PropTypes.object.isRequired
   };
   static sample = {
     set: "",
     now: "",
     prev: "",
     next: "",
-    config: {
-      splitter: '_'
-    }
   };
 
   constructor(props) {
     super(props);
     const initObject = {...DateSwitcher.sample};
 
-    if(props.splitter) {
-      initObject.config.splitter = props.splitter;
-    }
-
     const entity = constructEntity(initObject, props.type, props.id);
     this.id = props.id;
 
     this.props.dispatch(doInitEntities(entity.result));
 
-    performChange(props.type, this.id, props.dispatch, 'init',props.initDate, props.splitter)
+    performChange(props.type, this.id, props.dispatch, props.initDate, 'init')
   }
 
   componentDidMount() {
@@ -167,47 +159,28 @@ class DateSwitcher extends Component {
   }
 
   onUpClick = () => {
-    // const date =  dateFormation('up', this.props.object.now);
-    // this.props.dispatch(
-    //   doChangeEntity(
-    //     this.props.type,
-    //     this.id,
-    //     date
-    //   )
-    // );
     performChange(
       this.props.type,
       this.id,
       this.props.dispatch,
-      'up',
       this.props.object.now,
-      this.props.splitter);
+      'up');
   }
   onPrevClick = () => {
-    // const date =  dateFormation('prev', this.props.object.now);
-    // this.props.dispatch(
-    //   doChangeEntity(
-    //     this.props.type,
-    //     this.id,
-    //     date
-    //   )
-    // );
     performChange(
       this.props.type,
       this.id,
       this.props.dispatch,
-      'prev',
       this.props.object.now,
-      this.props.splitter);
+      'prev');
   }
   onNextClick = () => {
     performChange(
       this.props.type,
       this.id,
       this.props.dispatch,
-      'next',
       this.props.object.now,
-      this.props.splitter);
+      'next');
   }
 
   render() {
@@ -227,7 +200,6 @@ const mapStateToProps = (state, ownProps) => {
   if(entities[ownProps.type]){
     object = entities[ownProps.type][ownProps.id];
   }
-
   return ({
     object : object?object:{}
   });

@@ -2,8 +2,16 @@
   display: flex;
   flex-wrap: wrap;
 
+  .week {
+    display: flex;
+    flex-grow: 1;
+    width: auto;
+    flex-direction: column;
+  }
   .day {
-    width: 16.66%;
     height: 60px;
+  }
+  .empty {
+    background: #878f99;
   }
 }
