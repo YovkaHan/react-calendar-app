@@ -5,9 +5,9 @@ import React from 'react';
 import './index.scss';
 import PropTypes from 'prop-types'
 
-const Item = ({children, cName}) => {
+const Item = ({children, cName, onClick}) => {
   return (
-    <div className={`c-item ${cName? cName: ''}`}>
+    <div className={`c-item ${cName? cName: ''}`} onClick={onClick}>
       {children}
     </div>
   );
@@ -15,7 +15,8 @@ const Item = ({children, cName}) => {
 
 Item.propTypes = {
   children: PropTypes.node,
-  cName: PropTypes.string
+  cName: PropTypes.string,
+  onClick: PropTypes.func
 };
 
 export default Item;

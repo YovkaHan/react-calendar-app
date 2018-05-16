@@ -4,7 +4,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 // import Button from '../../presentational/Button';
-// import {entityChange} from '../../../actions';
+// import {doChangeEntity} from '../../../actions';
 import PropTypes from 'prop-types'
 import './index.scss'
 

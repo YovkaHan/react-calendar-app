@@ -1,5 +1,5 @@
 /**
- * Created by Jordan3D on 5/8/2018.
+ * Created by Jordan3D on 5/11/2018.
  */
 //sample of data for Flags component
 export const view = {
@@ -17,7 +17,7 @@ export const view = {
       value: "off"
     }
   },
-  colorsContainer1:{
+  colorsContainer1: {
     type: "container",
     red1: {
       type: "color",
@@ -125,7 +125,7 @@ export const view = {
   }
 };
 
-export const decompose = {
+export const decomposeFlags = {
   entities: {
     buttons: {
       button1: {
@@ -152,17 +152,17 @@ export const decompose = {
         value: "rgba(255,0,0,1.0)",
         isOn: {
           button1: {
-            type:"buttons",
+            type: "buttons",
             id: "button1",
             value: "on"
           },
           button6: {
-            type:"buttons",
+            type: "buttons",
             id: "button6",
             value: "on"
           },
           button4: {
-            type:"buttons",
+            type: "buttons",
             id: "button4",
             value: "off"
           }
@@ -172,22 +172,22 @@ export const decompose = {
         value: "rgba(0,0,255,1.0)",
         isOn: {
           button1: {
-            type:"buttons",
+            type: "buttons",
             id: "button1",
             value: "on"
           },
           button6: {
-            type:"buttons",
+            type: "buttons",
             id: "button6",
             value: "on"
           },
           button2: {
-            type:"buttons",
+            type: "buttons",
             id: "button2",
             value: "off"
           },
           button3: {
-            type:"buttons",
+            type: "buttons",
             id: "button3",
             value: "on"
           }
@@ -197,17 +197,17 @@ export const decompose = {
         value: "rgba(0,255,0,1.0)",
         isOn: {
           button2: {
-            type:"buttons",
+            type: "buttons",
             id: "button2",
             value: "on"
           },
           button5: {
-            type:"buttons",
+            type: "buttons",
             id: "button5",
             value: "on"
           },
           button3: {
-            type:"buttons",
+            type: "buttons",
             id: "button3",
             value: "off"
           },
@@ -220,22 +220,22 @@ export const decompose = {
         value: "rgba(255,255,0,1.0)",
         isOn: {
           button2: {
-            type:"buttons",
+            type: "buttons",
             id: "button2",
             value: "off"
           },
           button3: {
-            type:"buttons",
+            type: "buttons",
             id: "button3",
             value: "on"
           },
           button4: {
-            type:"buttons",
+            type: "buttons",
             id: "button4",
             value: "on"
           },
           button6: {
-            type:"buttons",
+            type: "buttons",
             id: "button6",
             value: "on"
           }
@@ -243,18 +243,21 @@ export const decompose = {
       }
     },
     containers: {
-      buttonContainer1: [{type:"buttons", id: "button1"}],
-      buttonContainer2: [{type:"buttons",id: "button2"}],
+      buttonContainer1: [{type: "buttons", id: "button1"}],
+      buttonContainer2: [{type: "buttons", id: "button2"}],
       colorsContainer1: [
-        {type:"colors",id: "red1"},
-        {type:"colors",id: "blue1"},
-        {type:"colors",id: "green1"},
-        {type:"colors",id: "yellow1"}
-        ],
-      buttonContainer3: [{type:"buttons",id: "button3"}],
-      buttonContainer4: [{type:"buttons",id: "button4"}],
-      buttonContainer5: [{type:"buttons",id: "button5"}],
-      buttonContainer6: [{type:"buttons",id: "button6"}],
+        {type: "colors", id: "red1"},
+        {type: "colors", id: "blue1"},
+        {type: "colors", id: "green1"},
+        {type: "colors", id: "yellow1"}
+      ],
+      buttonContainer3: [{type: "buttons", id: "button3"}],
+      buttonContainer4: [{type: "buttons", id: "button4"}],
+      buttonContainer5: [{type: "buttons", id: "button5"}],
+      buttonContainer6: [{type: "buttons", id: "button6"}],
     }
   }
 }
+
+
+

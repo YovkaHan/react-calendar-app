@@ -2,10 +2,16 @@
  * Created by Jordan3D on 5/9/2018.
  */
 
-import { INIT_FLAGS_ENTITIES, CHANGE_ENTITY } from '../actions';
+import { INIT_ENTITIES, EDIT_ENTITY } from '../actions';
+
+const initialState = {
+  components: {
+
+  }
+};
 
 const changeEntity = (entity, id, object) => {
-  return {...entity, [id]: object};
+  return {...entity, [id]: Object.assign({},entity[id],object)};
 }
 
 const changeEntities = (state,  action) => {
@@ -16,12 +22,12 @@ const addEntities = (state, logic) => {
   return Object.assign({},state,logic.entities);
 }
 
-const entities = (state = {}, action) => {
+const entities = (state = initialState, action) => {
   switch (action.type) {
-    case INIT_FLAGS_ENTITIES : {
+    case INIT_ENTITIES : {
       return addEntities(state, action.logic)
     }
-    case CHANGE_ENTITY : {
+    case EDIT_ENTITY : {
       return changeEntities(state, action)
     }
     default:

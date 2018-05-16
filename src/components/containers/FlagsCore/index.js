@@ -6,8 +6,8 @@ import {connect} from 'react-redux';
 // import uniqid from 'uniqid';
 import ButtonContainer from '../ButtonContainer';
 import ColorsContainer from '../ColorsContainer';
-import { decompose } from '../../../data';
-import {initFlagsEntities} from '../../../actions'
+import { decomposeFlags } from '../../../data';
+import {doInitEntities} from '../../../actions'
 import './index.scss'
 // import Week from '../Week';
 // import Event from '../Event';
@@ -122,7 +122,7 @@ class FlagsCore extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(initFlagsEntities(decompose));
+    this.props.dispatch(doInitEntities(decomposeFlags));
   }
 
   render() {

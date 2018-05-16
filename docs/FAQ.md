@@ -117,7 +117,7 @@ Unfortunately, scripts in package.json can't be commented inline because the JSO
 | **Dependency** | **Use** |
 |----------|-------|
 |autoprefixer | Automatically adds vendor prefixes, using data from Can I Use. |
-|object-assign | Polyfill for Object.assign |
+|object-assign | Polyfill for CObject.assign |
 |babel-cli|Babel Command line interface |
 |babel-core|Babel Core for transpiling the new JavaScript to old |
 |babel-eslint|Integrates Babel with ESLint so experimental JS features ESLint doesn't support yet can be linted.

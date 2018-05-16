@@ -4,7 +4,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Segment from '../Segment'
-import {createObject} from '../../../actions'
+import {doCreateObject} from '../../../actions'
 import './index.scss';
 
 const segments = new Array(24).fill({});
@@ -26,7 +26,7 @@ class Day extends Component {
 
   render() {
     return(
-      <div className="c-dayf">
+      <div className="c-day">
         {segments.map( (s,i) => <Segment key={i} intervals={getInterval(i, segments.length, intervals)}/>)}
       </div>
     )

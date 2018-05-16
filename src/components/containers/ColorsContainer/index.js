@@ -4,7 +4,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Color from '../Color';
-import {entityChange} from '../../../actions';
+import {doChangeEntity} from '../../../actions';
 import PropTypes from 'prop-types'
 
 const ColorsContainer = ({children}) => {

@@ -4,7 +4,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Button from '../../presentational/Button';
-import {entityChange} from '../../../actions';
+import {doChangeEntity} from '../../../actions';
 import PropTypes from 'prop-types'
 
 class ButtonContainer extends Component {
@@ -21,7 +21,7 @@ class ButtonContainer extends Component {
   onClick = () => {
     const newValue = this.props.value === 'on' ? 'off' : 'on';
     this.props.dispatch(
-      entityChange(
+      doChangeEntity(
         this.props.type,
         this.props.id,
         {

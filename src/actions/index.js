@@ -4,28 +4,37 @@
 
 export const CREATE_OBJECT = 'CREATE_OBJECT';
 export const SET_COLOR_LOGIC = 'SET_COLOR_LOGIC';
-export const INIT_FLAGS_ENTITIES = 'INIT_FLAGS_ENTITIES';
-export const CHANGE_ENTITY = 'CHANGE_ENTITY';
+export const INIT_ENTITIES = 'INIT_ENTITIES';
+export const EDIT_ENTITY = 'EDIT_ENTITY';
+export const NEW_ENTITY_OBJECT = 'NEW_ENTITY_OBJECT';
 
-export const createObject = (promise) => ({
+export const doCreateObject = (promise) => ({
   type: CREATE_OBJECT,
   promise
 });
 
 
-export const setColorLogic = (logic, id) => ({
+export const doSetColorLogic = (logic, id) => ({
   type: SET_COLOR_LOGIC,
   logic,
   id
 });
 
-export const initFlagsEntities = (logic) => ({
-  type: INIT_FLAGS_ENTITIES,
+export const doInitEntities = (logic) => ({
+  type: INIT_ENTITIES,
   logic
 });
 
-export const entityChange = (type, id, object) => ({
-  type: CHANGE_ENTITY,
+export const doNewEntityObject = (type, id) => ({
+  type: NEW_ENTITY_OBJECT,
+  configs: {
+    type,
+    id
+  }
+})
+
+export const doChangeEntity = (type, id, object) => ({
+  type: EDIT_ENTITY,
   configs: {
     type,
     id

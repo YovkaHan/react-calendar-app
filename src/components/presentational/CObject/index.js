@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {createObject} from '../../../actions'
+import {doCreateObject} from '../../../actions'
 import './index.scss';
 import Button from '../Button';
 // import Week from '../Week';
@@ -11,14 +11,14 @@ import Button from '../Button';
 import Event from '../Event';
 import Month from '../Month';
 
-class Object extends Component {
+class CObject extends Component {
   constructor(props){
     super(props);
     this.state = {id: null};
   }
   componentWillMount() {
     let promise = {object: null};
-    this.props.dispatch(createObject(promise));
+    this.props.dispatch(doCreateObject(promise));
     promise.object.then((id)=>{
       this.setState({id});
     })
@@ -41,4 +41,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Object)
+)(CObject)

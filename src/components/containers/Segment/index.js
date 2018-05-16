@@ -4,7 +4,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Item from '../../presentational/Item'
-import {createObject} from '../../../actions'
+import {doCreateObject} from '../../../actions'
 import './index.scss';
 import PropTypes from 'prop-types'
 
