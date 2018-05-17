@@ -7,9 +7,9 @@ import './index.scss';
 
 const ControlButtons = () => (
   <div className="c-control-buttons">
+    <button>Add/Edit Event</button>
     <button>Save</button>
-    <button>Edit</button>
-    <button>Clear</button>
+    <button>Load</button>
   </div>
 );
 

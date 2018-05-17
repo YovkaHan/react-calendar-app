@@ -1,0 +1,23 @@
+.c-segment {
+  position: relative;
+  width: 12.5%;
+  height: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #6a74ed;
+  cursor: pointer;
+
+  .num {
+    position: absolute;
+    display: inline-block;
+    font-size: 26px;
+    color: #6d6d6d;
+    font-family: "Times New Roman";
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+.c-quarter {
+  border: transparent;
+}

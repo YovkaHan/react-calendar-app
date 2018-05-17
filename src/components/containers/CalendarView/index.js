@@ -56,7 +56,7 @@ class CalendarView extends Component {
 
   render() {
     return (
-      <div className="c-calendar view">
+      <div className="c-calendar__view">
         {this.setChange(this.props.dateSwitcher.set, this.props.dateSwitcher.now)}
       </div>
     )

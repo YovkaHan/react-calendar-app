@@ -10,7 +10,8 @@ import PropTypes from 'prop-types'
 
 class Segment extends Component {
   static propTypes = {
-    intervals: PropTypes.object.isRequired
+    intervals: PropTypes.object.isRequired,
+    number: PropTypes.number.isRequired
   }
   constructor(props){
     super(props);
@@ -28,9 +29,9 @@ class Segment extends Component {
   }
 
   render() {
-
     return(
-      <div>
+      <div className="c-segment">
+        <div className="num">{this.props.number}</div>
         {this.intervals.map( (i, index) => <Item key={index} interval={i} cName='c-quarter'/>)}
       </div>
     )

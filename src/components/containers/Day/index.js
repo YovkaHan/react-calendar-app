@@ -27,7 +27,7 @@ class Day extends Component {
   render() {
     return(
       <div className="c-day">
-        {segments.map( (s,i) => <Segment key={i} intervals={getInterval(i, segments.length, intervals)}/>)}
+        {segments.map( (s,i) => <Segment key={i} number={i+1 >= 10? i+1: '0'+(i+1)} intervals={getInterval(i, segments.length, intervals)}/>)}
       </div>
     )
   }

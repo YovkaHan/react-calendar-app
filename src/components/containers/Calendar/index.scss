@@ -3,12 +3,17 @@
   flex-direction: column;
   width: 700px;
   margin: 0 auto;
-  border: 1px solid bisque;
+  border: 5px solid #838be2;
+  border-radius: 10px;
+
+  &__view {
+    border: 1px solid blue;
+  }
 }
 
 .c-panel {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid bisque;
+  border: 1px solid #6a74ed;
 }

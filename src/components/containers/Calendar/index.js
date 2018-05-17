@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 import './index.scss';
 
 // import Week from '../Week';
-// import ControlButtons from '../ControlButtons';
+import {ControlButtons, EventController} from '../../';
 // import Event from '../Event';
 // import Month from '../Month';
 import CalendarView from '../CalendarView';
@@ -58,13 +58,10 @@ class Calendar extends Component {
     return (
       <div className="c-calendar">
 
-        {/*<Event/>*/}
-        <DateSwitcher id="dateSwitcher1" type="dateSwitcher" initDate="2018_05_13"/>
-        <CalendarView/>
-        {/*<Week/>*/}
+        {/*<DateSwitcher id="dateSwitcher1" type="dateSwitcher" initDate="2018_05_13"/>*/}
+        {/*<CalendarView/>*/}
+        {/*<EventController/>*/}
         {/*<ControlButtons/>*/}
-        {/*<Month/>*/}
-
       </div>
     );
   }

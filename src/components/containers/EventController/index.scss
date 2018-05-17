@@ -1,0 +1,16 @@
+.c-event-control {
+  width: 100%;
+  border: 1px solid blue;
+  height: 150px;
+
+  .input {
+    border: 2px solid bisque;
+    font-size: 16px;
+    width: 90%;
+    margin: 10px 5%;
+  }
+  .event-text__input {
+    max-height: 50px;
+    max-width: 90%;
+  }
+}

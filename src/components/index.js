@@ -11,6 +11,7 @@ import DateSwitcher from './containers/DateSwitcher';
 import Day from './containers/Day';
 import FlagsCore from './containers/FlagsCore';
 import Segment from './containers/Segment';
+import EventController from './containers/EventController'
 
 import Button from './presentational/Button';
 import ControlButtons from './presentational/ControlButtons';
@@ -34,6 +35,7 @@ export {
   Day,
   FlagsCore,
   Segment,
+  EventController,
   Button,
   ControlButtons,
   Event,

@@ -1,8 +1,29 @@
 .c-control-buttons {
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #6a74ed;
+
   button {
-    background: blue;
-    width: 100px;
+    background: #6a74ed;
+    min-width: 100px;
+    padding: 0 30px;
+    margin: 0 30px;
     height: 30px;
     color: white;
+    border-radius: 15px;
+    font-size: 16px;
+    border: 2px solid cornflowerblue;
+    transition: 0.5s all;
+    cursor: pointer;
+
+    &:hover {
+      color: yellowgreen;
+      border-color: yellowgreen;
+    }
+    &.active {
+      background: #413dff;
+    }
   }
 }

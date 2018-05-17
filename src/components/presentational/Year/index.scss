@@ -1,8 +1,11 @@
 .c-year {
   display: flex;
+  flex-wrap: wrap;
   .month {
     display: flex;
-    width: 16.6%;
+    width: 25%;
     height: 60px;
+    justify-content: center;
+    align-items: center;
   }
 }
