@@ -12,10 +12,10 @@ const months = new Array(12).fill({});
 const Year = (props) => (
   <div className="c-year">
     {months.map((d, i) => {
-      const date = moment(props.date).date(i+1).format('YYYY_MM') ;
+      const date = moment(props.date).add(i, 'M').format('YYYY_MM') ;
       return (
         <Item key={i} cName={'month'} onClick={()=> {props.onClick.call(null, date)}}>
-          {i+1}
+          {date}
         </Item>)
     })}
   </div>
@@ -24,7 +24,8 @@ const Year = (props) => (
 
 Year.propTypes = {
   year: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  date: PropTypes.string.isRequired
 }
 
 export default Year;

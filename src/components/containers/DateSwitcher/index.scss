@@ -1,5 +1,43 @@
 .arrow {
-  width: 10px;
-  height: 10px;
-  background: black;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: 1px solid black;
+  color: black;
+  border-radius: 15px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 10px;
+    height: 1px;
+    margin: auto;
+    background-color: black;
+    transform: rotate(45deg);
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    top: -7px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 11px;
+    height: 1px;
+    background-color: black;
+    transform: rotate(-45deg);
+  }
+  &-right {
+    transform: scale(-1, 1);
+  }
+}
+
+.view-title {
+  margin: 0 20px;
 }

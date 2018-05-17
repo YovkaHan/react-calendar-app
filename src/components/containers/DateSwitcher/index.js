@@ -187,7 +187,7 @@ class DateSwitcher extends Component {
     return (
       <div className="c-panel" style={{height: dayHeight}}>
         <div className="arrow arrow-left" onClick={this.onPrevClick}></div>
-        <div className="viewTitle" onClick={this.onUpClick}>{this.props.object.now}</div>
+        <div className="view-title" onClick={this.onUpClick}>{this.props.object.now}</div>
         <div className="arrow arrow-right" onClick={this.onNextClick}></div>
       </div>
     )
