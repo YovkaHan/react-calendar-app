@@ -3,11 +3,10 @@
  */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {doNewEntityObject} from '../../../actions/index'
+import {doCreateComponent} from '../../../actions/index'
 import PropTypes from 'prop-types'
 import './index.scss';
-
-// import Week from '../Week';
+import { fetchData } from '../../../actions'
 import {ControlButtons, EventController} from '../../';
 // import Event from '../Event';
 // import Month from '../Month';
@@ -41,11 +40,7 @@ class Calendar extends Component {
     super(props);
     this.state = {id: null};
 
-    this.init = function (props) {
-      const id = props.component;
-      const type = "component";
-      props.dispatch(doNewEntityObject(id, type));
-    }(props)
+    props.dispatch(doCreateComponent('calendar', props.component));
   }
   componentWillMount() {
     // let promise = {object: null};
@@ -53,13 +48,14 @@ class Calendar extends Component {
     // promise.object.then((id)=>{
     //   this.setState({id});
     // })
+    this.props.dispatch(fetchData());
   }
   render() {
     return (
       <div className="c-calendar">
 
-        {/*<DateSwitcher id="dateSwitcher1" type="dateSwitcher" initDate="2018_05_13"/>*/}
-        {/*<CalendarView/>*/}
+        <DateSwitcher component="calendar1" id="dateSwitcher5" initDate="2018_05_13"/>
+        <CalendarView component="calendar1" />
         {/*<EventController/>*/}
         {/*<ControlButtons/>*/}
       </div>

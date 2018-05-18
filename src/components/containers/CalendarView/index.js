@@ -12,6 +12,7 @@ import './index.scss';
 // Views: Day / Month / Year
 class CalendarView extends Component {
   static propTypes = {
+    component: PropTypes.string.isRequired,
     dateSwitcher: PropTypes.object.isRequired
   };
 
@@ -21,8 +22,8 @@ class CalendarView extends Component {
 
   goToDateClick(current, date) {
     performChange(
-      'dateSwitcher',
-      'dateSwitcher1',
+      'dateSwitchers',
+      this.props.dateSwitcher.id,
       this.props.dispatch,
       date);
   }
@@ -63,10 +64,11 @@ class CalendarView extends Component {
   }
 }
 
-
 const mapStateToProps = (state, ownProps) => {
-  const {entities} = state;
-  const dateSwitcher = entities["dateSwitcher"]["dateSwitcher1"];
+  const {entities, components} = state;
+
+  const dateSwitcherID = components[ownProps.component]["dateSwitcher"];
+  const dateSwitcher = entities["dateSwitchers"][dateSwitcherID];
   return {
     dateSwitcher
   }

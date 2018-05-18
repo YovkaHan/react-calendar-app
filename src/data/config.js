@@ -7,15 +7,15 @@ const root = {
   entities: {}
 };
 
-export function constructEntity (sample,type, nid) {
+export function constructEntity (object,type, nid) {
   const result = {...root};
   const id = nid? nid : uniqid();
 
   if(result.entities[type]){
-    result.entities[type][id] = {...sample};
+    result.entities[type][id] = {...object};
   } else {
     result.entities[type] = {};
-    result.entities[type][id] = {...sample};
+    result.entities[type][id] = {...object};
   }
 
   return {

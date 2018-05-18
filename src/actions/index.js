@@ -2,11 +2,32 @@
  * Created by Jordan3D on 5/8/2018.
  */
 
+import {eventsSchema} from '../data/normalize'
+import {normalize} from 'normalizr';
+
 export const CREATE_OBJECT = 'CREATE_OBJECT';
 export const SET_COLOR_LOGIC = 'SET_COLOR_LOGIC';
 export const INIT_ENTITIES = 'INIT_ENTITIES';
 export const EDIT_ENTITY = 'EDIT_ENTITY';
 export const NEW_ENTITY_OBJECT = 'NEW_ENTITY_OBJECT';
+export const RECEIVE_DATA = 'RECEIVE_DATA';
+
+export const PROPERTY_CREATE = 'PROPERTY_CREATE';
+export const CREATE_COMPONENT = 'CREATE_COMPONENT';
+
+export const doCreateComponent = (componentType, id) => ({
+  type: CREATE_COMPONENT,
+  componentType,
+  id
+});
+
+export const doComponentPropertyCreate = (parentId, property, id) => ({
+  type: PROPERTY_CREATE,
+  id: parentId,
+  propertyName: property,
+  propertyValue: id
+});
+
 
 export const doCreateObject = (promise) => ({
   type: CREATE_OBJECT,
@@ -41,3 +62,37 @@ export const doChangeEntity = (type, id, object) => ({
   },
   object
 })
+
+export const doAddToParent = (parent, property, id) => ({
+  type: PARENT_PLUS,
+  property,
+  id
+})
+
+export const doReceiveData = (json) => {
+  const data = normalize(json, eventsSchema);
+  return ({
+    type: RECEIVE_DATA,
+    result: data.result,
+    entities: data.entities
+  });
+}
+
+
+export const fetchData = (data) => dispatch => {
+  if (data) {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+
+    return fetch('http://localhost:4000/events', {
+      method: 'post',
+      headers: headers,
+      body: JSON.stringify(data)
+    }).then(response => response.json())
+      .then(json => console.log(json))
+  }
+  return fetch(`http://localhost:4000/events`)
+    .then(response => response.json())
+    .then(json => dispatch(doReceiveData(json)))
+}

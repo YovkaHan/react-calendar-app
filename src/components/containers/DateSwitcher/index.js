@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import moment from 'moment';
 import PropTypes from 'prop-types'
 import {constructEntity} from '../../../data/config'
-import {doInitEntities, doChangeEntity} from '../../../actions'
+import {doInitEntities, doChangeEntity, doComponentPropertyCreate} from '../../../actions'
 
 import './index.scss';
 
@@ -136,22 +136,27 @@ class DateSwitcher extends Component {
     object: PropTypes.object.isRequired
   };
   static sample = {
+    id: "",
     set: "",
     now: "",
     prev: "",
     next: "",
   };
+  static type = "dateSwitchers";
 
   constructor(props) {
     super(props);
     const initObject = {...DateSwitcher.sample};
 
-    const entity = constructEntity(initObject, props.type, props.id);
+    initObject.id = props.id;
     this.id = props.id;
+
+    const entity = constructEntity(initObject, DateSwitcher.type, props.id);
 
     this.props.dispatch(doInitEntities(entity.result));
 
-    performChange(props.type, this.id, props.dispatch, props.initDate, 'init')
+    performChange(DateSwitcher.type, this.id, props.dispatch, props.initDate, 'init');
+    this.props.dispatch(doComponentPropertyCreate(props.component, 'dateSwitcher', this.id));
   }
 
   componentDidMount() {
@@ -160,7 +165,7 @@ class DateSwitcher extends Component {
 
   onUpClick = () => {
     performChange(
-      this.props.type,
+      DateSwitcher.type,
       this.id,
       this.props.dispatch,
       this.props.object.now,
@@ -168,7 +173,7 @@ class DateSwitcher extends Component {
   }
   onPrevClick = () => {
     performChange(
-      this.props.type,
+      DateSwitcher.type,
       this.id,
       this.props.dispatch,
       this.props.object.now,
@@ -176,7 +181,7 @@ class DateSwitcher extends Component {
   }
   onNextClick = () => {
     performChange(
-      this.props.type,
+      DateSwitcher.type,
       this.id,
       this.props.dispatch,
       this.props.object.now,
@@ -197,8 +202,8 @@ class DateSwitcher extends Component {
 const mapStateToProps = (state, ownProps) => {
   const {entities} = state;
   let object = null;
-  if(entities[ownProps.type]){
-    object = entities[ownProps.type][ownProps.id];
+  if(entities[DateSwitcher.type]){
+    object = entities[DateSwitcher.type][ownProps.id];
   }
   return ({
     object : object?object:{}
