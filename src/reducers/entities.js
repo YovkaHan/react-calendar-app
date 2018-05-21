@@ -2,7 +2,7 @@
  * Created by Jordan3D on 5/9/2018.
  */
 
-import { INIT_ENTITIES, EDIT_ENTITY } from '../actions';
+import { INIT_ENTITIES, EDIT_ENTITY, RECEIVE_DATA } from '../actions';
 
 const initialState = {
   components: {
@@ -29,6 +29,9 @@ const entities = (state = initialState, action) => {
     }
     case EDIT_ENTITY : {
       return changeEntities(state, action)
+    }
+    case RECEIVE_DATA: {
+      return addEntities(state, action.logic)
     }
     default:
       return state

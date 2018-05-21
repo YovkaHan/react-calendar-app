@@ -156,7 +156,7 @@ class DateSwitcher extends Component {
     this.props.dispatch(doInitEntities(entity.result));
 
     performChange(DateSwitcher.type, this.id, props.dispatch, props.initDate, 'init');
-    this.props.dispatch(doComponentPropertyCreate(props.component, 'dateSwitcher', this.id));
+    props.dispatch(doComponentPropertyCreate(props.component, 'dateSwitcher', this.id));
   }
 
   componentDidMount() {

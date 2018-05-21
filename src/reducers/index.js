@@ -7,7 +7,7 @@ import components from './components'
 
 const rootReducer = combineReducers({
   // objects,
-  colors,
+ //colors,
   entities,
   components
 });

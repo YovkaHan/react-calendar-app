@@ -22,6 +22,7 @@ const types = {
   calendar
 };
 
+
 const components = (state = {}, action) => {
   // if component exist
   if(state.hasOwnProperty(action.id)){

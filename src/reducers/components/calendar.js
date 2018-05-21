@@ -7,13 +7,16 @@ const initState = {
   id: null,
   type: 'calendar',
   dateSwitcher : null,
-  actualView: null,
-  bufferEvent: null,
-  eventList: null
+  calendarView: null,
+  eventController: null
 };
+
 
 function calendarCreate(state, action) {
   const result = {...state};
+  if(result.hasOwnProperty(action.id)){
+    return result;
+  }
   result[action.id] = Object.assign({},initState,{id: action.id});
   return result;
 }

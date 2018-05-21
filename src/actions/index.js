@@ -69,12 +69,18 @@ export const doAddToParent = (parent, property, id) => ({
   id
 })
 
-export const doReceiveData = (json) => {
+export const doEventListGenerate = (eventControllerId) => dispatch => {
+  dispatch(fetchData())
+    .then(json => dispatch(doNormalizeData(json)))
+    .then(res => dispatch(doChangeEntity('eventControllers', eventControllerId, {list: res.result})))
+}
+
+export const doNormalizeData = (json) => {
   const data = normalize(json, eventsSchema);
   return ({
     type: RECEIVE_DATA,
     result: data.result,
-    entities: data.entities
+    logic: data
   });
 }
 
@@ -94,5 +100,4 @@ export const fetchData = (data) => dispatch => {
   }
   return fetch(`http://localhost:4000/events`)
     .then(response => response.json())
-    .then(json => dispatch(doReceiveData(json)))
 }

@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 import {doCreateComponent} from '../../../actions/index'
 import PropTypes from 'prop-types'
 import './index.scss';
-import { fetchData } from '../../../actions'
 import {ControlButtons, EventController} from '../../';
 // import Event from '../Event';
 // import Month from '../Month';
@@ -48,15 +47,14 @@ class Calendar extends Component {
     // promise.object.then((id)=>{
     //   this.setState({id});
     // })
-    this.props.dispatch(fetchData());
   }
   render() {
     return (
       <div className="c-calendar">
 
         <DateSwitcher component="calendar1" id="dateSwitcher5" initDate="2018_05_13"/>
-        <CalendarView component="calendar1" />
-        {/*<EventController/>*/}
+        <CalendarView component="calendar1" id="calendarView1" />
+        <EventController component="calendar1" id="eventController1" />
         {/*<ControlButtons/>*/}
       </div>
     );

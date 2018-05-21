@@ -3,12 +3,10 @@
  */
 import uniqid from 'uniqid';
 
-const root = {
-  entities: {}
-};
-
 export function constructEntity (object,type, nid) {
-  const result = {...root};
+  const result = {
+    entities: {}
+  };
   const id = nid? nid : uniqid();
 
   if(result.entities[type]){
